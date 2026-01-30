@@ -56,9 +56,15 @@ class FunnelIndex
 
 		$this->config_pages = array('create_config', 'login', 'forgot_password', 'do_payment', 'schedule_api', 'mail_track', 'do_unsubscribe', 'do_redirect', 'data_requests', 'load_static_scripts', 'api_request', 'show_cf_narand', 'mmbr_lgout', 'do_payment_execute', 'ajax', 'callback_api', 'schedule_api_runserver');
 
+		//if (is_file($GLOBALS["config_file"])) {
+			//require_once($GLOBALS["config_file"]);
+			//doInitRoute();
+
 		if (is_file($GLOBALS["config_file"])) {
-			require_once($GLOBALS["config_file"]);
-			doInitRoute();
+    require_once($GLOBALS["config_file"]);
+    if (function_exists('doInitRoute')) {
+        doInitRoute();
+    }
 
 			//language_handler_script
 			$executable_language = (get_option('app_language'));
