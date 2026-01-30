@@ -3,6 +3,3 @@ nixPkgs = ["php", "nodejs"]
 
 [phases.build]
 cmds = ["mkdir -p /app/lang && chmod -R 777 /app/lang"]
-
-[start]
-cmd = "mkdir -p /app/lang && chmod -R 777 /app/lang && php -S 0.0.0.0:80 -t /app"
