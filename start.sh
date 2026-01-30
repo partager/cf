@@ -4,18 +4,21 @@
 mkdir -p /app/lang
 chmod -R 777 /app/lang
 
-# Détecter l'utilisateur courant
-CURRENT_USER=$(whoami)
-echo "Current user: $CURRENT_USER"
+# Créer un utilisateur www-data s'il n'existe pas
+if ! id -u www-data > /dev/null 2>&1; then
+    addgroup -g 82 -S www-data 2>/dev/null || true
+    adduser -u 82 -D -S -G www-data www-data 2>/dev/null || true
+fi
 
-# Créer une config PHP-FPM avec l'utilisateur courant
+# Créer une config PHP-FPM
 cat > /tmp/php-fpm.conf <<EOF
 [global]
 error_log = /dev/stderr
 daemonize = no
 
 [www]
-user = $CURRENT_USER
+user = www-data
+group = www-data
 listen = 127.0.0.1:9000
 pm = dynamic
 pm.max_children = 5
