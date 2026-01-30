@@ -60,7 +60,7 @@ class FunnelIndex
 			//require_once($GLOBALS["config_file"]);
 			//doInitRoute();
 
-		if (is_file($GLOBALS["config_file"])) {
+		if (is_file($GLOBALS["config_file"]) && filesize($GLOBALS["config_file"]) > 0) {
     require_once($GLOBALS["config_file"]);
     if (function_exists('doInitRoute')) {
         doInitRoute();
