@@ -2,7 +2,7 @@
 nixPkgs = ["php82", "php82Extensions.mbstring", "php82Extensions.pdo", "php82Extensions.pdo_mysql", "nginx", "nodejs"]
 
 [phases.build]
-cmds = ["chmod +x start.sh"]
+cmds = ["chmod +x /app/start.sh"]
 
 [start]
-cmd = "./start.sh"
+cmd = "sh /app/start.sh"
