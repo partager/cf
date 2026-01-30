@@ -1,8 +1,12 @@
 #!/bin/sh
 
-# Créer le dossier lang avec permissions
+# Créer les dossiers et fichiers nécessaires avec permissions
 mkdir -p /app/lang
 chmod -R 777 /app/lang
+
+# Donner les permissions sur config.php s'il existe, sinon le créer
+touch /app/config.php
+chmod 666 /app/config.php
 
 # Créer un utilisateur www-data s'il n'existe pas
 if ! id -u www-data > /dev/null 2>&1; then
