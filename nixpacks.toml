@@ -1,5 +1,8 @@
 [phases.setup]
-nixPkgs = ["php", "nodejs"]
+nixPkgs = ["php82", "php82Extensions.mbstring", "php82Extensions.pdo", "php82Extensions.pdo_mysql", "nginx", "nodejs"]
 
 [phases.build]
 cmds = ["mkdir -p /app/lang && chmod -R 777 /app/lang"]
+
+[start]
+cmd = "mkdir -p /app/lang && chmod -R 777 /app/lang && nginx -g 'daemon off;'"
