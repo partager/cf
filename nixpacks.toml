@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ["php", "nodejs"]
+
+[phases.install]
+cmds = ["mkdir -p /app/lang", "chmod -R 777 /app/lang"]
+
+[start]
+cmd = "mkdir -p /app/lang && chmod -R 777 /app/lang && php-fpm"
